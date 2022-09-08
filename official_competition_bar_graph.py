@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #사용자 키 (넥슨에서 발급)
-api_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJYLUFwcC1SYXRlLUxpbWl0IjoiNTAwOjEwIiwiYWNjb3VudF9pZCI6IjEzNDMwOTAzNzgiLCJhdXRoX2lkIjoiMiIsImV4cCI6MTY3ODAwOTAyNSwiaWF0IjoxNjYyNDU3MDI1LCJuYmYiOjE2NjI0NTcwMjUsInNlcnZpY2VfaWQiOiI0MzAwMTE0ODEiLCJ0b2tlbl90eXBlIjoiQWNjZXNzVG9rZW4ifQ.tS9ocmoEg2BK-UzoGT60178omldYyIQhmsJ01fs_ErU"
+api_key = "넥슨에서-발급"
 
 #헤더
 headers = {'Authorization' : api_key}
@@ -23,7 +23,7 @@ def main():
     nickname = str(input("NickName : "))
 
     #매치 아이디 조회
-    match_info = {'matchtype' : 40, 'offset' : 0, 'limit' : 100}
+    match_info = {'matchtype' : 50, 'offset' : 0, 'limit' : 100}
     match_url = 'https://api.nexon.co.kr/fifaonline4/v1.0/users/'+ userIdFind(nickname) + '/matches?'
     match_url_req = requests.get(match_url,params=match_info, headers = headers)
     match_url_data = match_url_req.json()
