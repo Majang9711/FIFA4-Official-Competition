@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #사용자 키 (넥슨에서 발급)
-api_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJYLUFwcC1SYXRlLUxpbWl0IjoiNTAwOjEwIiwiYWNjb3VudF9pZCI6IjEzNDMwOTAzNzgiLCJhdXRoX2lkIjoiMiIsImV4cCI6MTY3ODAwOTAyNSwiaWF0IjoxNjYyNDU3MDI1LCJuYmYiOjE2NjI0NTcwMjUsInNlcnZpY2VfaWQiOiI0MzAwMTE0ODEiLCJ0b2tlbl90eXBlIjoiQWNjZXNzVG9rZW4ifQ.tS9ocmoEg2BK-UzoGT60178omldYyIQhmsJ01fs_ErU"
+api_key = "KEY"
 
 #헤더
 headers = {'Authorization' : api_key}
@@ -171,6 +171,42 @@ def avgoalHeading(matchCount, nickname):
         av_goalHeading = av_goalHeading + int(match_result)
     return float(av_goalHeading/matchCount)
 
+# 평균 인 패널티 골 수
+def avgoalInPenalty(matchCount, nickname):
+    goalInPenalty = 0
+    match_info, match_url_data = matchIdFind(40, 0, matchCount, nickname)
+    for i in range(0, match_info['limit'], 1): 
+        match_id = match_url_data[i]
+        match_result = matchInfoFind(match_id)["matchInfo"][0]["shoot"]["goalInPenalty"]
+        goalInPenalty = goalInPenalty + int(match_result)
+    return int(goalInPenalty/matchCount)
 
+# 아웃 패널티 골 수
+def avgoalOutPenalty(matchCount, nickname):
+    goalOutPenalty = 0
+    match_info, match_url_data = matchIdFind(40, 0, matchCount, nickname)
+    for i in range(0, match_info['limit'], 1): 
+        match_id = match_url_data[i]
+        match_result = matchInfoFind(match_id)["matchInfo"][0]["shoot"]["goalOutPenalty"]
+        goalOutPenalty = goalOutPenalty + int(match_result)
+    return int(goalOutPenalty/matchCount)
 
+# 프리킥 골 수
+def avfreeKick(matchCount, nickname):
+    FreeKick = 0
+    match_info, match_url_data = matchIdFind(40, 0, matchCount, nickname)
+    for i in range(0, match_info['limit'], 1): 
+        match_id = match_url_data[i]
+        match_result = matchInfoFind(match_id)["matchInfo"][0]["shoot"]["goalFreekick"]
+        FreeKick = FreeKick + int(match_result)
+    return int(FreeKick/matchCount)
 
+# 패널티킥 골 수
+def avgoalPenaltyKick(matchCount, nickname):
+    goalPenaltyKick = 0
+    match_info, match_url_data = matchIdFind(40, 0, matchCount, nickname)
+    for i in range(0, match_info['limit'], 1): 
+        match_id = match_url_data[i]
+        match_result = matchInfoFind(match_id)["matchInfo"][0]["shoot"]["goalPenaltyKick"]
+        goalPenaltyKick = goalPenaltyKick + int(match_result)
+    return int(goalPenaltyKick/matchCount)
