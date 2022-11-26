@@ -1,9 +1,3 @@
-# 랭커 기준 
-# - 스루 패스 시도 수,  로빙 스루 패스 시도 수가 많으면 => 침투 플레이
-# - 점유율, 패스 시도 수 => 점유율 플레이
-# - 롱 패스 시도 수, 헤딩 슛 수, 인패널티 슛 수 => 타겟맨 플레이
-# - 아웃패널티 슛 수 => 중거리 플레이
-
 import official_competition_bar_graph as ocbg
 
 rank_throughPass = 18
