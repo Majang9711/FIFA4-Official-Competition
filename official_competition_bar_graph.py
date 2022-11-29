@@ -7,10 +7,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #사용자 키 (넥슨에서 발급)
-api_key = "KEY"
+api_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJYLUFwcC1SYXRlLUxpbWl0IjoiNTAwOjEwIiwiYWNjb3VudF9pZCI6IjEzNDMwOTAzNzgiLCJhdXRoX2lkIjoiMiIsImV4cCI6MTY3ODAwOTAyNSwiaWF0IjoxNjYyNDU3MDI1LCJuYmYiOjE2NjI0NTcwMjUsInNlcnZpY2VfaWQiOiI0MzAwMTE0ODEiLCJ0b2tlbl90eXBlIjoiQWNjZXNzVG9rZW4ifQ.tS9ocmoEg2BK-UzoGT60178omldYyIQhmsJ01fs_ErU"
 
 #헤더
 headers = {'Authorization' : api_key}
+
 
 #승률 그래프 함수
 def winningRate(matchCount, nickname):
@@ -210,3 +211,6 @@ def avgoalPenaltyKick(matchCount, nickname):
         match_result = matchInfoFind(match_id)["matchInfo"][0]["shoot"]["goalPenaltyKick"]
         goalPenaltyKick = goalPenaltyKick + int(match_result)
     return int(goalPenaltyKick/matchCount)
+
+
+
