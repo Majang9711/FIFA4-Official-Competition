@@ -1,4 +1,4 @@
-import module_my.official_competition_bar_graph as ocbg
+import official_competition_bar_graph as ocbg
 
 rank_throughPass = 18
 rank_lobbedThroughPassTry = 1
