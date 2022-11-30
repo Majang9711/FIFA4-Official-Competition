@@ -1,4 +1,5 @@
-import official_competition_bar_graph as ocbg
+import module_my.official_competition_bar_graph as ocbg
+import os
 
 rank_throughPass = 18
 rank_lobbedThroughPassTry = 1
@@ -21,11 +22,22 @@ def main():
     #공격 플레이 스타일 분석
     play_style = getPlayStyle(nickname, match_count);
 
+    #평균 경기 득점 수
+    avgoalCount = str(ocbg.avgoalTotal(match_count, nickname))
+
+    #주요 득점방식
+    goalMax = (getGoalCode(getMaxGoal(match_count, nickname)))
+
     #결과 출력
-    print("[ %s님의 플레이어 분석 ]" %nickname)
-    print("- 평균 경기(%d) 득점 수 : %s" %(match_count, str(ocbg.avgoalTotal(match_count, nickname))))
-    print("- 주요 득점 방식 : %s" %(getGoalCode(getMaxGoal(match_count, nickname))))
+    print("[ FIFA ONLINE4 분석 도우미 ]")
+    print("- 닉네임 : %s" %nickname)
+    print("- 평균 경기(%d) 득점 수 : %s" %(match_count, avgoalCount))
+    print("- 주요 득점 방식 : %s" %goalMax)
     print("- 플레이 스타일 : %s" %play_style)
+
+    #승률 그래프 100경기 기준
+    ocbg.winningRate(100, nickname)
+    os.system('pause')
 
 #스타일 코드
 def getPlayStyleCodeMessage(style_code):
@@ -34,7 +46,7 @@ def getPlayStyleCodeMessage(style_code):
         1 : "점유율 플레이",
         2 : "타겟맨 플레이",
         3 : "중거리 플레이",
-        4 : "밸런스 플레이",
+        4 : "밸런스 플레이"
     }
     return dict[style_code]
 
