@@ -15,9 +15,10 @@ headers = {'Authorization' : api_key}
 
 #승률 그래프 함수
 def winningRate(matchCount, nickname):
+      
     #승무패 변수와 그래프 관련 변수
     x = np.arange(3)
-    result = ["Win", "Draw", "Lose"] 
+    result = ["승", "무", "패"] 
     resultCount = [0, 0, 0] #승, 무, 패 순서
 
     #매치 아이디 조회
@@ -36,13 +37,13 @@ def winningRate(matchCount, nickname):
         elif match_result == "패":
             resultCount[2] = resultCount[2] + 1
 
-    result[0] = "Win(" + str(resultCount[0]) + "%)"
-    result[1] = "Draw(" + str(resultCount[1]) + "%)"
-    result[2] = "Lose(" + str(resultCount[2]) + "%)"
+    result[0] = "승(" + str(resultCount[0]) + "%)"
+    result[1] = "무(" + str(resultCount[1]) + "%)"
+    result[2] = "패(" + str(resultCount[2]) + "%)"
 
     plt.bar(x, resultCount, width=0.5)
     plt.xticks(x, result)
-    plt.title("1 to 1 official match")
+    plt.title("1 vs 1 공식 경기")
     plt.show() 
 
 #매치 정보 조회
